@@ -1,14 +1,14 @@
-import React from "react";
-import {NavLink , useHistory} from "react-router-dom"
+import React, {useState} from "react";
+import { useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
+import { loginUser } from "../actions/action";
+
 const Login = () => {
 
-    const history = useHistory();
-    const [email,setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [Email, setEmail] = useState("")
+    const [Password, setPassword] = useState("");
+    const dispatch = useDispatch();
 
-    const loginUser = () => {
-
-    }
 
     return(
         <>
@@ -17,24 +17,26 @@ const Login = () => {
                     <h1>Login</h1>
                 </div>
                 <hr />
+
+
                 <div className="form_div">
-                    <form method="POST">
+                    <form className="login_form" id="login_form">
                         <label>Username </label> 
-                        <input type='text' name="email" id="email"
-                         onClick={(e) => {setEmail(e.target.value)}} placeholder="Enter Email ID..." />
+                        <input required  name="email" onChange={e => setEmail(e.target.value)} id="email" type='text' placeholder="Enter Email ID..."/>
                         
                         <label>Password </label>
-                        <input type='password' name="password" id="password"
-                         onClick={(e) => {setPassword(e.target.value)}} placeholder="Enter Password ..." />
+                        <input required name="password" onChange={e => setPassword(e.target.value)}  id="password" type='password' placeholder="Enter Password ..."/>
                         
-                        <button type="submit" onClick = {loginUser}>Log In</button>
+                        <button type="submit" onClick={() => {dispatch(loginUser(Email,Password))}}>Log In</button>
                     </form>
                 </div>
-                
+
+                <div className="registersign_div">
+                    <NavLink to = "/Register">Create An Account</NavLink>
+                </div>
             </div>
-            <div className="sign_div">
-                <NavLink to = "/Registration">Create An Account</NavLink>
-            </div>
+            
+
         </>
     )
 }

@@ -49,9 +49,13 @@
     color: blue;
   }
   
-  .sign_div {
+  .loginsign_div {
     text-align: center;
-    margin:500px 500px 0px 500px;
+    margin:800px 500px 0px 500px;
+  }
+  .registersign_div{
+    text-align: center;
+    margin:400px 500px 0px 500px;
   }
   
   .error {

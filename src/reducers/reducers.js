@@ -1,49 +1,35 @@
 import {combineReducers} from "redux";
 
 const initialState = {
-    list : []
+    userList: []
 }
 
-const Reducers = (state = initialState, action) => {
-
-
+const Reducers = (state = initialState , action) => {
     switch(action.type){
         
-       case "Add_Item" :
-           if(action.payload.item === ""){
-               alert("please enter list...");
-               return state;
-           }
-           else{
+       case "Register_User" :
+            const {Name, Email ,Phone, Work, Salary,  Password , CPassword} = action.payload
+            if( Name|| Email ||Phone|| Work|| Salary||  Password || CPassword === "") {
+                alert("please fill the data carefully...");
+                return state;
+            }
+            else{
+
+                console.log("userlist: ", state.userList)
                 return {
-                    list: [ 
-                        ...state.list,action.payload
-                    ]
-                } 
-           }
-            
-        case "Delete_Item":
-            
-            return {
-                list: state.list.filter(ele => ele.id !== action.payload.id)
-            }
-        case "Edit_Item" :
-            
-            return {
-                list: state.list
+                    state
+                }
             }   
+            
+        case "Login_User":
 
-        case "Save_Update" :
-            console.log("id",action.payload.id)
-            console.log("item",action.payload.item)
-            return {
-                list: state.list.map(ele => ele.id === action.payload.id ? {...ele,item: action.payload.item, editing: false} : ele)
-            }   
-
-        case "Remove_All" :     
-            return {
-                list : []
+            if(action.payload.Email || action.payload.Password === "") {
+                alert("please fill the data carefully..");
             }
+            else{
+                return state
+            }
+
         default :
             return state;
     }

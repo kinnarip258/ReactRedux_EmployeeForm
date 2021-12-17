@@ -1,53 +1,28 @@
-export const addItems = (item) => {
+export const registerUser = (Name, Email ,Phone, Work, Salary,  Password , CPassword) => {
     return{
-        type: "Add_Item",
+        type: "Register_User",
         payload: {
             id: new Date().getTime().toString(),
-            item,
-            checked: false,
-            editing: false
+            Name, Email ,Phone, Work, Salary,  Password , CPassword
         }
-    }
-    
+    }    
 }
 
-export const editItem = (id) => {
-    
-    return{ 
-        type: "Edit_Item", 
-        payload: {
-            id   
-        }
-    }
-}
-
-export const saveUpdate = (id, item) => {
-    
-    return{ 
-        type: "Save_Update", 
-        payload: {
-            id, item  
-        }
-    }
-}
-
-
-export const deleteItem = (id) => {
+export const loginUser = (Email, Password) => {
     return{
-        type: "Delete_Item",
+        type: "Login_User",
         payload: {
-            id: id,
-            key: id
+            Email,Password
         }
-        
     }
-
-    
 }
 
-export const removeAll  = () => {
+export const editUser = (id, data) => {
     return{
-        type: "Remove_All"
+        type: "Edit_User",
+        payload: {
+            id, data
+        }
     }
 }
 
