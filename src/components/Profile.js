@@ -13,7 +13,7 @@ const Profile = () => {
                 <div className="user_details">
                     <span>
                         <p>Name: </p> 
-                        <p>Email Id: </p>
+                        <p>Email Id: </p> 
                         <p>Phone No.</p>
                         <p>Profession : </p>
                         <p>Salary: </p>

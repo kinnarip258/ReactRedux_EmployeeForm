@@ -1,34 +1,45 @@
 import {combineReducers} from "redux";
 
-const initialState = {
-    userList: []
+const initialstate = {
+    list:[]
 }
 
-const Reducers = (state = initialState , action) => {
+const Reducers = (state = initialstate , action) => {
+    
     switch(action.type){
         
        case "Register_User" :
-            const {Name, Email ,Phone, Work, Salary,  Password , CPassword} = action.payload
-            if( Name|| Email ||Phone|| Work|| Salary||  Password || CPassword === "") {
+            const {Name, Email ,Phone, Work, Salary,  Password , CPassword} = action.payload;
+
+            if( Name|| Email ||Phone || Work || Salary ||  Password || CPassword === "") {
                 alert("please fill the data carefully...");
                 return state;
             }
             else{
-
-                console.log("userlist: ", state.userList)
+               
                 return {
-                    state
+                    list: state.list,state,
                 }
+                
             }   
             
-        case "Login_User":
 
-            if(action.payload.Email || action.payload.Password === "") {
-                alert("please fill the data carefully..");
+        case "Edit_User" :
+            return {
+                list: state.list
+            } 
+
+
+        case "Delete_User" :
+            return {
+                list: state.list.filter(ele => ele.id !== action.payload.id)
             }
-            else{
-                return state
-            }
+
+        case "Save_Update" :
+            return {
+                list: state.list.map(ele => ele.id === action.payload.id ? {...ele,item: action.payload.item, editing: false} : ele)
+            }  
+
 
         default :
             return state;

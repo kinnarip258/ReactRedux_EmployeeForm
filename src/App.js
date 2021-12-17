@@ -1,5 +1,5 @@
 import React from 'react'
-import EmployeeForm from "./components/EmployeeForm";
+import EmployeeForm from "./EmployeeForm";
 import Login from './components/Login';
 import Profile from './components/Profile';
 import Data from "./components/Data";
