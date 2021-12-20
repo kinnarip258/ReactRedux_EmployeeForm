@@ -1,9 +1,6 @@
 import React from 'react'
-import EmployeeForm from "./EmployeeForm";
-import Login from './components/Login';
-import Profile from './components/Profile';
+import EmployeeForm from "./components/EmployeeForm";
 import Data from "./components/Data";
-import Home from "./components/Home";
 import {Route, Switch} from "react-router-dom";
 
 
@@ -12,10 +9,7 @@ const App = () => {
     <>
         
         <Switch>
-            <Route exact path="/"><Home /></Route>
-            <Route exact path="/Login" ><Login /></Route>
-            <Route exact path="/Register" ><EmployeeForm /></Route>
-            <Route exact path="/Profile" ><Profile /></Route>
+            <Route exact path="/" ><EmployeeForm /></Route>
             <Route exact path="/Data"><Data /></Route>
         </Switch>
   
