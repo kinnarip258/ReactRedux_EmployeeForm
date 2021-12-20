@@ -44,3 +44,12 @@ export const userSearch = (data,Emplist) => {
         }
     }
 }
+
+export const allUsers = (data,Emplist) => {
+    return {
+        type: "All_Users",
+        payload:{
+            data,Emplist
+        }
+    }
+}

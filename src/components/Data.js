@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { editUser, saveUpdate, deleteUser ,userSearch} from "../actions/action";
+import { editUser, saveUpdate, deleteUser ,userSearch, allUsers} from "../actions/action";
 import { NavLink } from "react-router-dom";
 
 const Data = () => {
@@ -33,6 +33,10 @@ const Data = () => {
                 <div className="search_div">
                     <input onChange={e => setInputData(e.target.value)} value={inputData} placeholder="search Employee..."/>
                     <button onClick={() => {dispatch(userSearch(inputData,list), setInputData(""))}}>Search</button>
+                </div>
+
+                <div className="search_div">
+                    <button onClick={() => {dispatch(allUsers())}}>Show All Employees</button>
                 </div>
 
                 <hr />
