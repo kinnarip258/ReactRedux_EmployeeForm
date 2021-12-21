@@ -65,4 +65,29 @@
 
 .dashboard_div{
   margin-left:1500px;
+  font-size: 18px;
+}
+
+.allEmployeeList_div{
+  margin-top: 10px;
+  text-align: center;
+}
+
+.allEmployeeList_div button{
+  font-size: 18px;
+  color: blue;
+  border: blue 2px solid;
+}
+
+.search_div input{
+  margin-left: 0px;
+  font-size: 18px;
+  border: 2px solid blue;
+}
+.search_div button{
+  margin-left: 0px;
+  font-size: 18px;
+  color: blue;
+  border: blue 2px solid;
+  
 }

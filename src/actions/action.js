@@ -1,19 +1,19 @@
-export const registerUser = (Name, Email ,Phone, Work, Salary,  Password) => {
+export const registerUser = (data) => {
     return{
         type: "Register_User",
         payload: {
             id: new Date().getTime().toString(),
-            Name, Email ,Phone, Work, Salary,  Password,
+            data,
             editing: false
         }
     }    
 }
 
-export const editUser = (id, Name, Email ,Phone, Work, Salary,  Password) => {
+export const editUser = (id, data) => {
     return{
         type: "Edit_User",
         payload: {
-            id,Name, Email ,Phone, Work, Salary, Password
+            id, data
         }
     }
 }
@@ -27,20 +27,20 @@ export const deleteUser = (id) => {
     }
 }
 
-export const saveUpdate = (id, Name, Email ,Phone, Work, Salary,  Password) => {
+export const saveUpdate = (id, data) => {
     return {
         type: "Save_Update",
         payload:{
-            id, Name, Email ,Phone, Work, Salary,  Password
+            id, data
         }
     }
 }
 
-export const userSearch = (data,Emplist) => {
+export const userSearch = (data) => {
     return {
         type: "User_Search",
         payload:{
-            data,Emplist
+            data
         }
     }
 }

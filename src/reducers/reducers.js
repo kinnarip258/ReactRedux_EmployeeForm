@@ -39,34 +39,22 @@ const Reducers = (state = initialstate , action) => {
             }
 
         case "Save_Update" :
-
-            const {id, Name, Email, Phone, Work, Salary, Password} = action.payload;
+            const {id, data } = action.payload;
             return {
                 ...state,
-                list: state.list.map(ele => ele.id === id ? {...ele,Name: Name,
-                    Email: Email,
-                    Phone: Phone,
-                    Work: Work,
-                    Salary: Salary,
-                    Password: Password,
+                list: state.list.map(ele => ele.id === id ? {...ele, data,
                     editing: false} : ele),
-                searchlist: state.searchlist.map(ele => ele.id === id ? {...ele,Name: Name,
-                    Email: Email,
-                    Phone: Phone,
-                    Work: Work,
-                    Salary: Salary,
-                    Password: Password,
+                searchlist: state.searchlist.map(ele => ele.id === id ? {...ele, data,
                     editing: false} : ele)
 
             }  
 
         case "User_Search" :
-            console.log("inputdata from reducers: ", action.payload.data);
-            console.log("list: ", state.list);
-            console.log("searchlist: ", state.searchlist);
+            console.log("list from the search reducers: ", state.searchlist);
+            console.log("data from search reducers: ", action.payload.data);
             return {
                 ...state,
-                list: state.searchlist.filter(ele => ele.Name === action.payload.data || ele.Salary === action.payload.data)
+                list: state.searchlist.filter(ele => ele.data.Name === action.payload.data || ele.data.Salary === action.payload.data)
             }  
 
         case "All_Users" :
