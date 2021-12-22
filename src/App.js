@@ -11,6 +11,7 @@ const App = () => {
         <Switch>
             <Route exact path="/" ><EmployeeForm /></Route>
             <Route exact path="/Deshboard"><Deshboard /></Route>
+            <Route exact path="/:id"><EmployeeForm /></Route>
         </Switch>
   
             

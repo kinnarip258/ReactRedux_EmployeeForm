@@ -1,64 +1,67 @@
 
 const initialstate = {
+    editedObject:{
+        Name:"", Email:"", Phone:"", Work:"", Salary:"", Password:""
+    },
     list:[],
-    searchlist: []
+    templist: []
 }
 
 const Reducers = (state = initialstate , action) => {
     
     switch(action.type){
-        
        case "Register_User" :
-            
-                console.log("from reducers: ", action.payload)
+                action.payload.data = {
+                    ...action.payload.data,
+                    id: new Date().getTime().toString()
+                }
                 return{
                     ...state,
                     list: [
-                        ...state.list, action.payload
+                        ...state.list, action.payload.data
+                    
                     ],
-                    searchlist: [
-                        ...state.searchlist, action.payload
+                    templist: [
+                        ...state.templist, action.payload.data,
                     ]
                 }
             
         case "Edit_User" :
+            const selectesObj = state.templist.find(ele => ele.id === action.payload.id);
             return {
                 ...state,
-                list: state.list.filter(ele => ele.id !== action.payload.id),
-                searchlist: state.searchlist.filter(ele => ele.id !== action.payload.id)
+                editedId: action.payload.id,
+                editedObject: selectesObj,
             } 
-
 
         case "Delete_User" :
             return {
                 ...state,
                 list: state.list.filter(ele => ele.id !== action.payload.id),
-                searchlist: state.searchlist.filter(ele => ele.id !== action.payload.id)
+                templist: state.templist.filter(ele => ele.id !== action.payload.id)
             }
 
         case "Save_Update" :
-            const {id, data } = action.payload;
+            
+            const newListData = state.list.findIndex(ele => ele.id === action.payload.id);
+            const newTempListData = state.templist.findIndex(ele => ele.id === action.payload.id);
+            state.list[newListData] = action.payload.data;
+            state.templist[newTempListData] = action.payload.data;
             return {
                 ...state,
-                list: state.list.map(ele => ele.id === id ? {...ele, data,
-                    editing: false} : ele),
-                searchlist: state.searchlist.map(ele => ele.id === id ? {...ele, data,
-                    editing: false} : ele)
-
+               
             }  
 
         case "User_Search" :
-            console.log("list from the search reducers: ", state.searchlist);
-            console.log("data from search reducers: ", action.payload.data);
             return {
                 ...state,
-                list: state.searchlist.filter(ele => ele.data.Name === action.payload.data || ele.data.Salary === action.payload.data)
+                list: state.templist.filter(ele => ele.data.Name === action.payload.data || ele.data.Salary.toString() === action.payload.data)
             }  
 
         case "All_Users" :
             return {
                 ...state,
-                list: state.searchlist
+                list: state.templist
             }
 
         default :
