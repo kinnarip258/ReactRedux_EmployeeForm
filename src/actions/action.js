@@ -18,11 +18,11 @@ export const editUser = (id, data) => {
     }
 }
 
-export const deleteUser = (id) => {
+export const deleteUser = (id, data) => {
     return{
         type: "Delete_User",
         payload: {
-            id
+            id, data
         }
     }
 }

@@ -1,4 +1,3 @@
-import {combineReducers} from "redux";
 
 const initialstate = {
     list:[],
@@ -23,7 +22,6 @@ const Reducers = (state = initialstate , action) => {
                 }
             
         case "Edit_User" :
-
             return {
                 ...state,
                 list: state.list.filter(ele => ele.id !== action.payload.id),
@@ -67,10 +65,5 @@ const Reducers = (state = initialstate , action) => {
             return state;
     }
 }
-
-
-const StoreReducers = combineReducers({Reducers});
-
-export default StoreReducers;
 
 export {Reducers}

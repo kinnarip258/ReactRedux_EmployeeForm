@@ -78,20 +78,20 @@ const Data = () => {
                                     </form> : null
                                 }   
 
-                                <table style={{"width" : "100%"}}>
-                                        <tr>
-                                            <td>{ele.id}</td>
-                                            <td>{ele.editing ? editedData.Name : ele.data.Name}</td>
-                                            <td>{ele.editing ? editedData.Email : ele.data.Email}</td>
-                                            <td>{ele.editing ? editedData.Phone : ele.data.Phone}</td>
-                                            <td>{ele.editing ? editedData.Work : ele.data.Work}</td>
-                                            <td>{ele.editing ? editedData.Salary : ele.data.Salary}</td>
-                                            <td>{ele.editing ? editedData.Password : ele.data.Password}</td>
-                                        </tr>
+                    <table style={{"width" : "100%"}}>
+                        <tr>
+                            <td>{ele.id}</td>
+                            <td>{ele.editing ? editedData.Name : ele.data.Name}</td>
+                            <td>{ele.editing ? editedData.Email : ele.data.Email}</td>
+                            <td>{ele.editing ? editedData.Phone : ele.data.Phone}</td>
+                            <td>{ele.editing ? editedData.Work : ele.data.Work}</td>
+                            <td>{ele.editing ? editedData.Salary : ele.data.Salary}</td>
+                            <td>{ele.editing ? editedData.Password : ele.data.Password}</td>
+                        </tr>
 
-                                        <button  onClick = {() => {dispatch(editUser(ele.id, ele.data, ele.editing = true), history.push("/"))}}> Edit </button>
-                                        <button onClick = {() => {dispatch(deleteUser(ele.id))}} > Delete </button>
-                                </table> 
+                            <button  onClick = {() => {dispatch(editUser(ele.editing = true))}}> Edit </button>
+                            <button onClick = {() => {dispatch(deleteUser(ele.id))}} > Delete </button>
+                    </table> 
                                     
                                 </div>
                             )
