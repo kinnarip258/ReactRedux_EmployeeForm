@@ -53,9 +53,11 @@ const Reducers = (state = initialstate , action) => {
             }  
 
         case "User_Search" :
+            console.log("data of searchreducers, ", action.payload.searchData);
+            console.log("name and salary ", state.templist);
             return {
                 ...state,
-                list: state.templist.filter(ele => ele.data.Name === action.payload.data || ele.data.Salary.toString() === action.payload.data)
+                list: state.templist.filter(ele => ele.Name === action.payload.searchData || ele.Salary.toString() === action.payload.searchData)
             }  
 
         case "All_Users" :

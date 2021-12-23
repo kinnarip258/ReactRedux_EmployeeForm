@@ -36,11 +36,11 @@ export const saveUpdate = (id,data) => {
     }
 }
 
-export const userSearch = (data) => {
+export const userSearch = (searchData) => {
     return {
         type: "User_Search",
         payload:{
-            data
+            searchData
         }
     }
 }

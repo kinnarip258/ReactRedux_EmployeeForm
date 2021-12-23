@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {deleteUser ,userSearch, allUsers} from "../actions/action";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 
 const Data = () => {
 
     const dispatch = useDispatch();
     const list = useSelector(state => state.Reducers.list);
-    const history = useHistory();
     const [inputData, setInputData] = useState("");
-    console.log("list from deshboard: ", list)
     return(
         <>
             <div className="main_div">
